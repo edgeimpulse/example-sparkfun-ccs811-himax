@@ -1,0 +1,8 @@
+**/build-gnu/
+**/build/
+**/build-mw/
+CMakeFiles/
+Makefile
+cmake_install.cmake
+*.o
+*.img
