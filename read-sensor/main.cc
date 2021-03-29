@@ -60,7 +60,7 @@ void loop()
     myCCS811.readAlgorithmResults(); //Read latest from CCS811 and update tVOC and CO2 variables
     printData();
 
-    hx_util_delay_ms(1000); //Wait for next reading
+    hx_util_delay_ms(500); //Wait for next reading
 }
 
 int main(int argc, char *argv[])
