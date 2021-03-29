@@ -12,6 +12,8 @@ Data can then be forwarded to the Edge Impulse project using the data forwarder,
 edge-impulse-data-forwarder --frequency 1
 ```
 
+You can also have an overview of the raw data by opening a serial connection (baudrate=115200), before using the Data Forwarder.
+
 
 If you need to modify the firmware, check out the _main.cc_, and rebuild/compile with:
 
