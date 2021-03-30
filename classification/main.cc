@@ -25,7 +25,6 @@
 #include "hx_drv_tflm.h"
 #include "SparkFunBME280.h"
 #include "SparkFunCCS811.h"
-//#include "model_metadata.h"
 
 #define CCS811_ADDR 0x5B //Default I2C Address
 
@@ -82,7 +81,6 @@ void setup()
 // Fill features array with sensors values
 void getSensors() {
     for (int i = 0; i < EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE; i += 3) {
-        //uint64_t next_tick = micros() + (EI_CLASSIFIER_INTERVAL_MS * 1000);
 
         myCCS811.readAlgorithmResults(); //Read latest from CCS811 and update tVOC and CO2 variables
         features[i + 0] = (float)myCCS811.getCO2();
@@ -98,7 +96,7 @@ int main(void)
 {
     setup();
     hx_drv_tick_start();
-    ei_printf("Edge Impulse standalone inferencing Himax WE-I Plus EVB\n");
+    ei_printf("Edge Impulse inferencing on Himax WE-I board and Sparkfun environmental breakout\n");
 
     while (1) {
 
@@ -121,6 +119,7 @@ int main(void)
 
 
         // invoke the impulse
+        // debug=true to print out features' array & predictions
         EI_IMPULSE_ERROR res = run_classifier(&signal, &result, true);
         ei_printf("run_classifier returned: %d\n", res);
 
@@ -129,22 +128,22 @@ int main(void)
         ei_printf("Predictions (DSP: %d ms., Classification: %d ms., Anomaly: %d ms.): \n",
             result.timing.dsp, result.timing.classification, result.timing.anomaly);
 
-        // print the predictions
-        ei_printf("[");
-        for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-            ei_printf("%f", result.classification[ix].value);
-    #if EI_CLASSIFIER_HAS_ANOMALY == 1
-            ei_printf(", ");
-    #else
-            if (ix != EI_CLASSIFIER_LABEL_COUNT - 1) {
-                ei_printf(", ");
-            }
-    #endif
-        }
-    #if EI_CLASSIFIER_HAS_ANOMALY == 1
-        ei_printf_float(result.anomaly);
-    #endif
-        ei_printf("]\n");
+    //  Features and predictions are printed by run_classifier so commenting this part
+    //     ei_printf("[");
+    //     for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
+    //         ei_printf("%f", result.classification[ix].value);
+    // #if EI_CLASSIFIER_HAS_ANOMALY == 1
+    //         ei_printf(", ");
+    // #else
+    //         if (ix != EI_CLASSIFIER_LABEL_COUNT - 1) {
+    //             ei_printf(", ");
+    //         }
+    // #endif
+    //     }
+    // #if EI_CLASSIFIER_HAS_ANOMALY == 1
+    //     ei_printf_float(result.anomaly);
+    // #endif
+    //     ei_printf("]\n");
 
         // And wait 2 seconds
         ei_sleep(2000);
