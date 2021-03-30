@@ -9,7 +9,7 @@ himax-flash-tool --firmware-path image_gen_linux/out.img
 Data can then be forwarded to the Edge Impulse project using the data forwarder, ie:
 
 ```
-edge-impulse-data-forwarder --frequency 1
+edge-impulse-data-forwarder --frequency 2
 ```
 
 You can also have an overview of the raw data by opening a serial connection (baudrate=115200), before using the Data Forwarder.
