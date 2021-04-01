@@ -9,6 +9,10 @@ This repo contains the example applications for the [workshop](https://www.edgei
 
 _**Note from [datasheet](https://cdn.sparkfun.com/assets/2/c/c/6/5/CN04-2019_attachment_CCS811_Datasheet_v1-06.pdf)**: CCS811 performance in terms of resistance levels and sensitivities will change during early life. The change in resistance is greatest over the first 48 hours of operation. CCS811 controls the burn-in period allowing eCO2 and eTVOC readings to be used from first power-on after 60 minutes of operation._
 
+**How to connect Himax WE-I Plus to the Sparkfun breakout board**
+
+![Connect Himax WE-I Plus to the Sparkfun breakout board](connect_sparkfun_himax.jpg)
+
 You can load the _read-sensor_ firmware to start the burn-in period.
 
 **Software requirements**
