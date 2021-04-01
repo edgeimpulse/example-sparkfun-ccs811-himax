@@ -23,3 +23,5 @@ You can load the _read-sensor_ firmware to start the burn-in period.
 * classification: run inference on target.
 
 After a long IDLE period, you should wait for 20 minutes before accurate readings are generated (see [datasheet](https://cdn.sparkfun.com/assets/2/c/c/6/5/CN04-2019_attachment_CCS811_Datasheet_v1-06.pdf)).
+
+A public project to classify tea and chocolate is available [here](https://studio.edgeimpulse.com/public/23260/latest/). This should just be used as a reference as samples are tighly correlated to the air quality and products.
